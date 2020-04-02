@@ -137,7 +137,7 @@ list( APPEND SOURCES
       >
       
       $<$<BOOL:${${_OPT}use_pa_wdmks}>:
-         ${TARGET_ROOT}/src/hostapi/wmme/pa_win_wdmks.c
+         ${TARGET_ROOT}/src/hostapi/wdmks/pa_win_wdmks.c
       >
 
       $<$<BOOL:${${_OPT}use_pa_alsa}>:
