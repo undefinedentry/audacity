@@ -29,6 +29,11 @@ if( CMAKE_SYSTEM_NAME MATCHES "Windows" )
       "Use the portaudio WMME interface if available"
       YES
    )
+   cmd_option(
+      ${_OPT}use_pa_wdmks
+      "Use the portaudio WDM-KS interface if available"
+      YES
+   )
 else()
    # Look for OSS if the user wants it
    cmd_option(
@@ -148,6 +153,10 @@ list( APPEND SOURCES
          ${TARGET_ROOT}/src/hostapi/wmme/pa_win_wmme.c
       >
 
+      $<$<BOOL:${${_OPT}use_pa_wdmks}>:
+         ${TARGET_ROOT}/src/hostapi/wdmks/pa_win_wdmks.c
+      >    
+      
       $<$<BOOL:${${_OPT}use_pa_alsa}>:
          ${TARGET_ROOT}/src/hostapi/alsa/pa_linux_alsa.c
       >
@@ -233,6 +242,10 @@ list( APPEND DEFINES
          PA_USE_WMME=1
       >
 
+      $<$<BOOL:${${_OPT}use_pa_wdmks}>:
+         PA_USE_WDMKS=1
+      >      
+      
       $<$<BOOL:${${_OPT}use_pa_coreaudio}>:
          PA_USE_COREAUDIO=1
       >

@@ -20,5 +20,6 @@ gh_export GIT_HASH_SHORT="$(git show -s --format='%h')"
 
 gh_export AUDACITY_BUILD_TYPE="RelWithDebInfo"
 gh_export AUDACITY_INSTALL_PREFIX="${repository_root}/build/install"
+gh_export ASIOSDK_DIR="${repository_root}/asio_sdk"
 
 gh_export GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
